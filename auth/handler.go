@@ -1,8 +1,7 @@
-package authentication
+package auth
 
 import (
 	"database/sql"
-	"errors"
 	"time"
 )
 

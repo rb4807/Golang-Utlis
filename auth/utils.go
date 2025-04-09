@@ -1,11 +1,14 @@
-package authentication
+package auth
 
 import (
 	"context"
 	"crypto/rand"
 	"errors"
 	"fmt"
+	"net/http"
 	"math/big"
+	"strings"
+	"regexp"
 	"github.com/go-playground/validator/v10"
 	"golang.org/x/crypto/bcrypt"
 )
@@ -101,3 +104,4 @@ func SanitizeUsername(username string) string {
 	sanitized = regexp.MustCompile(`[^a-zA-Z0-9_.]+`).ReplaceAllString(sanitized, "")
 	return sanitized
 }
+

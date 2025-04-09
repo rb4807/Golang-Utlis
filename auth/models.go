@@ -1,4 +1,4 @@
-package authentication
+package auth
 
 import (
 	"database/sql"
@@ -15,8 +15,8 @@ type User struct {
 	IsActive        bool      `json:"is_active"`
 	IsSuperuser     bool      `json:"is_superuser"`
 	DateJoined      time.Time `json:"date_joined"`
-	LastLogin       time.Time `json:"last_login"`
-	PasswordChanged time.Time `json:"password_changed"`
+	LastLogin       *time.Time `json:"last_login"`
+	PasswordChanged *time.Time `json:"password_changed"`
 }
 
 // OTPData stores OTP information
@@ -53,7 +53,7 @@ func InitDB(db *sql.DB) error {
 			is_active BOOLEAN DEFAULT TRUE,
 			is_superuser BOOLEAN DEFAULT FALSE,
 			date_joined TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-			last_login TIMESTAMP,
+			last_login TIMESTAMP NULL,
 			password_changed TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 		)
 	`)
